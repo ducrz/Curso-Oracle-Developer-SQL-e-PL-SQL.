@@ -3,3 +3,68 @@ Seção 1: Introdução
 Instalação Oracle XE
 
 Oracle Database Express Edition Express Edition 11g Release 2
+
+
+Configurando o SQL DEVELOPER
+
+
+TABLESPACE
+
+Um banco de dados Oracle consiste em uma ou mais unidades de armazenamento lógicos denominados tablespaces, que armazenam coletivamente todos os dados do banco de dados.
+
+Cada tablespace em um banco de dados Oracle consiste em um ou mais arquivos denominados arquivos de dados (datafiles), que são estruturas físicas compatíveis com o sistema operacional no qual o Oracle é executado.
+
+Os dados de um banco de dados são armazenados coletivamente nos arquivos de dados que constituem cada tablespace do banco de dados.
+
+Criando Table Space e Usuário
+create_table_space.sql
+
+
+Histórico da Linguagem SQL
+
+SQL (Structured Query Language)
+
+A primeira versão da linguagem SQL, chamada SEQUEL (Structured Query English Language), surgiu em 1974, nos laboratórios da IBM (Califórnia).
+Entre 1976 e 1977 ela foi revisada e ampliada, tendo então o seu nome alterado para SQL.
+
+Devido ao sucesso da nova forma de consulta e manipulação de dados dentro de um ambiente de banco de dados, sua utilização tornou-se cada vez maior.
+
+Em 1982 o American National Standard Institude (ANSI) tornou a SQL  a linguagem padrão para a manipulação de dados em ambiente relacional.
+
+A linguagem SQL pode ter vários enfoques:
+
+Linguagem interativa de consulta (query AdHoc)
+Através de comandos SQL os usuários podem montar consultas poderosas, sem a necessidade da criação de um programa, podendo utilizar ferramentas frontend para a montagem de relatórios.
+Exemplos: Oracle SQL Developer, DBTools.
+
+
+Linguagem de programação para acesso as bases de dados.
+
+Comandos SQL embutidos em programas de aplicação (escritos em PHP, .Net, C, C++, Java, etc) acessam os dados armazenados em uma base de dados relacional.
+
+
+Definição PL/SQL
+
+PL/SQL (Procedural Language Extesions to SQL)
+
+A linguagem PL/SQL(Procedural Languagem extesions to SQL),  foi introduzida no ano de 1988 como parte do conjunto de tecnologias que faziam parte da versão 6.0 do SGBD Oracle.
+Ela possibilita o desenvolvimento de programas que são armazenados, compilados e executados dentro do servidor de banco de dados Oracle. É tipicamente utilizada para a criação de aplicações de missão crítica, que requerem alto desempenho na execução de suas tarefas.
+
+
+SQL VERSUS PL/SQL
+
+
+SQL
+Linguagem declarativa. Não é possível criar programas inteiros em SQL.
+Linguagem padrão ANSI. Pode ser usada em qualquer SGBD relacional.
+
+
+PL/SQL
+Linguagem imperativa. Possibilita a criação de programas completos.
+Linguagem proprietária. Utilizada apenas pelo SGBD Oracle.
+
+
+Ranking de Banco de Dados mais Utilizados
+https://db-engines.com/en/ranking
+
+Conceitos DB PARTE 1
