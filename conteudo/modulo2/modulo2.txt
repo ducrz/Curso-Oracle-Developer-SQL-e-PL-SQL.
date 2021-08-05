@@ -1,0 +1,47 @@
+Linguagem SQL e PL/SQL do Básico ao Avançado
+
+Linguagem SQL:
+
+    Tipos de Campos;
+    Operadores de comparação;
+    Operadores aritiméticos;
+    Operadores de Filtros;
+    Operadores de Lógicos;
+    Definições da Linguagem SQL;
+    DML-Manipulação de dados;
+    DDL-Definições de banco de dados;
+    DCL-Contole de dados;
+    TCL-Controle de transações;
+    UNION;
+    Subquery
+    Joins
+    Funções de Agregação;
+    Funções Lógicas;
+    Funções Matemáticas;
+    Funções de Limite;
+    Funções de Conversões;
+    Funções de Cadeia de caracteres;
+    Funções de Data/hora;
+    Funções de Criptografia;
+    Expressão CASE;
+    VIEWS;
+    Tabelas temporárias;
+
+Linguagem PL-SQL:
+
+    Blocos anônimos;
+    Declaração de variaveis;
+    Atributos TYPE E ROWTYPE;
+    Tipos de registros;
+    Identificadores;
+    Estrutura IF-THEN;
+    Estrutura IF-THEN-ELSE;
+    Estrutura IF-THEN-ELSIF;
+    GOTO;
+    LOOP (FOR,WHILE);
+    EXCESSÕES;
+    Procedures;
+    Cursores;
+    Triggers;
+    Functions;
+    Packages.

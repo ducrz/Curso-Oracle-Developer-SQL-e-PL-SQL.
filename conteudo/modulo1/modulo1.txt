@@ -1,0 +1,19 @@
+Conceitos
+
+Introdução:
+
+    Linguagem SQL;
+    Posicionamento no mercado;
+    Instalação ORACLE XE;
+    instalação SQL DEVELOPER;
+    Definição da Linguagem SQL e PL/SQL
+
+
+Conceitos:
+
+    Banco de dados relacional;
+    Modelo entidade Relacionamento;
+    Cardinalidade;
+    SGDB;
+    ACID;
+    CRUD.

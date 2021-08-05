@@ -1,0 +1,5 @@
+Seção 1: Introdução
+
+Instalação Oracle XE
+
+Oracle Database Express Edition Express Edition 11g Release 2

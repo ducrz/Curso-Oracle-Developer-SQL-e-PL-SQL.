@@ -1,0 +1,12 @@
+Projeto (Mini ERP Multi-empresas)
+
+
+Projeto: CONSOLIDANDO O CONHECIMENTO
+
+    MINI ERP MULT EMPRESAS;
+        CRIAR TABELAS;
+        POPULAR;
+        PROCEDURES;
+        TRIGGERS;
+        FUNÇÃO;
+        VIEWS;

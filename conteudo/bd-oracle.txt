@@ -1,0 +1,15 @@
+Nome da Conexão: Ora XE
+Nome do Usuário: system
+Senha: oracle
+SID: XE
+Host: localhost
+
+
+User Name: aluno
+Password: aluno
+
+sudo service oracle-xe start
+
+/opt/sqldeveloper/sqldeveloper.sh
+
+
