@@ -68,3 +68,286 @@ Ranking de Banco de Dados mais Utilizados
 https://db-engines.com/en/ranking
 
 Conceitos DB PARTE 1
+
+Segundo Korth: "Um banco de dados é uma coleção de dados interrelacionados, representando informações sobre um domínio específico".
+
+Ou seja, sempre que for possível agrupar informações que se relacionam e tratam de um mesmo assunto, posso dizer que tenho um banco de dados.
+
+Os banco de dados são respositórios, que permitem ao computador/dispositivo manusear enormes quantidades de informações com as quais empresas e pessoas precisam lidar hoje em dia.
+
+Acrescentar
+INSERT
+
+Localizar
+SELECT
+
+Alterar
+UPDATE
+
+Apagar
+DELETE
+
+Conceitos DB Parte 2
+
+Organização de um Banco de Dados
+
+
+TABELAS
+Organiza as informações em listas e colunas.
+Ex: tabela de produtos
+
+Registro(s), tupla(s) ou linhas
+CAda linha pode ser denominada desta forma.
+Ex: Arroz, Açúcar, Leite.
+
+Campo.
+Cada coluna ou campo mantém algum tipo de informações sobre esse produto.
+Ex: código, descrição, peso, unidade e preço.
+
+
+
+DIAGRAMA DE DADOS
+
+
+CARACTERÍSTICAS DE BANCO DE DADOS RELACIONAL
+
+É a arquitetura na qual os dados são armazenados em tabelas que se relacionam entre si.
+
+
+CARACTERÍSTICAS:
+
+Permite controle de redundância de dados.
+Garantia da integridade dos dados.
+Garantia de privacidade.
+Otimização de espaço de armazenamento.
+Controle automático de relacionamento entre tabelas de dados.
+Perfomance de acesso a informação.
+Cada tabela (relação) tem seu nome diferente das demais na mesma base de dados.
+Cada coluna tem seu nome diferente das demais na mesma tabela.
+Colunas contém os atributos (todos do mesmo domínio).
+Linhas contém informações de um registro (uma tupla) da tabela.
+Cada célula pode conter no máximo um item de dados.
+Ordem das linhas é irrelevante.
+Ordem das colunas é irrelevante.
+Nunca temos duas linhas iguais.
+Chave primária.
+
+MER - MODELO DE ENTIDADE RELACIONAMENTO
+
+MER
+
+O modelo Entidade Relacionamento (também chamado Modelo ER ou simplesmente MER), como o nome sugere, é um modelo conceitual utilizado na Engenharia de Software para descrever os objetos (entidades) envolvidos em um domínio de negócios, com suas características (atributos) e como elas se relacionam entre si (relacionamentos).
+
+Em geral, este modelo representa de forma abstrata a estrutura que possuirá o banco de dados da aplicação. Obviamente, o banco de dados poderá conter várias outras entidades, tais como chaves e tabelas intermediárias, que podem só fazer sentido no contexto de bases de dados relacionais.
+
+
+Entidades:
+Os objetos ou partes envolvidas de um domínio, também chamados de entidades, podem ser classificados como físicos ou lógicos, de acordo com sua existência no mundo real.
+
+Entidades físicas: são aquelas realmente tangíveis, existentes e visíveis no mundo real, como um cliente (uma pessoa ou empresa) ou um produto (um computador, um carro ou uma roupa.
+
+Já entidades lógicas são aqueles que existem geralmente em decorrência da interação entre ou com entidades físicas, que faz sentido dentro de um certo domínio de negócios, mas que no mundo externo/real não são objetos físicos (que ocupam lugar no espaço). São exemplos disso uma venda ou uma classificação de um objeto (modelo, espécie, função de um usuário do sistema).
+
+
+As entidades são nomeadas com substantivos concretos ou abstratos que representem de forma clara sua função dentro do domínio. Exemplos práticos de entidades comuns em vários sistemas são Cliente, Produto, Venda, Turma, Função, entre outros.
+
+As entidades são nomeadas com substantivos concretos ou abstratos que representem de forma clara sua função dentro do domínio. Exemplos práticos de entidades comuns em vários sistemas são Cliente, Produto, Venda, Turma, Função, entre outros.
+
+FORTE
+
+São aqueles cuja existência independe de outras entidades, ou seja, por si só elas já possuem total sentido de existir. Em um sistema de vendas, a entidade produto, por exemplo, independe de quaisquer outras para existir.
+
+
+FRACA
+Ao contrário das entidades fortes, as fracas são aqueles que dependem de outras entidades para existir, pois individualmente elas não fazem sentido. Mantendo o mesmo exemplo, a entidade venda depende da entidade produto, pois uma venda sem itens não tem sentido.
+
+
+ASSOCIATIVA
+Esse tipo de entidade surge quando há uma necessidade de associar uma entidade a uma relacionamento existente.
+
+CARDINALIDADE
+
+1 PARA 1 (1-1)
+Cada uma das duas entidades envolvidas referenciam obrigatoriamente apenas uma unidade da outra.
+Por exemplo, em um banco de dados de currículos, cada usuário cadastrado pode possuir apenas um currículo na base, ao mesmo tempo em que cada currículo só pertence a um único usuário cadastrado.
+
+1 PARA MUITOS (1-N)
+Uma das entidades envolvidas pode referenciar várias unidades da outra, porém, do outro lado cada uma das várias unidades referenciadas só pode estar ligada a uma unidade da outra entidade.
+Por exemplo, em um sistema de planos de saúde, um usuário pode ter vários dependentes, mas cada dependente só pode estar ligado a um usuário principal.
+Há apenas duas entidades envolvidas: usuário e dependente. O que muda é a quantidade de unidades /exemplares envolvidas de cada lado.
+
+MUITOS PARA MUITOS (N-N)
+Neste tipo de relacionamento cada entidade, de amos os lados, podem referenciar múltias unidades da outra.
+Por exemplo, em um sistema de biblioteca, um título pode ser escrito por vários autores, ao mesmo  tempo em que um autor pode escrever vários títulos. Assim, um objeto do tipo autor pode referenciar  múltiplos objetos do tipo título e vice-versa.
+
+
+
+SGDB
+
+É o software que auxilia a criação e manutenção dos dados em um sistema de banco de dados.
+
+Exemplo: MYSQL, SQLSERVER, ORACLE DATABASE, DB2, FIREBIRD, POSTGRESQL, entre outros.
+TIPO DE DADOS.
+
+Sistemas de Banco de Dados
+
+É o conjunto formado pelos aplicativos, SGDB e por todos os dados manipulados por este.
+É um sistema de manuteção de registros por computador envolvendo quatro componentes principais, sendo eles: dados, hardware, software e usuários.
+
+TIPOS DE DADOS
+
+Os tipos de dados em Oracle são organizados nas seguintes categorias:
+
+Tipos de Texto (Strings)
+Tipos Numéricos (Inteiros ou decimais)
+Tipos de Datas (Temporais)
+
+VARCHAR
+Agora obsoleta (fornecido somente para compatibilidade com versões anteriores)
+
+VARCHAR2(size)
+4000 bytes minimum is 1
+Cadeia de caracteres de comprimento variável com bytes de tamanho máximo.
+Você deve especificar o tamanho
+
+NVARCHAR2(size)
+4000 bytes minimum is 1
+Cadeia de conjunto de caracteres nacionais de comprimento variável com bytes
+de tamanho de comprimento máximo. Você deve especificar o tamanho
+
+LONG
+2 Gigabytes - but now deprecated (provided for backward compatibility only).
+Dados de caracteres de comprimento variável (Uma versão maior do tipo de dados VARCHAR2)
+
+NCHAR(size)
+2000 bytes Default and minimum size is 1 byte.
+Dados de conjunto de caracteres nacionais de comprimento fixo de bytes de tamanho de comprimento. Isso deve ser usado para dados de comprimento fixo. Como os códigos A100, B102 ...
+
+
+CHAR(size)
+2000 bytes Default and minimum size is 1 byte.
+Dados de caracteres de comprimento fixos de bytes de tamanho de comprimento. Isso deve ser usado para dados de comprimento fixo. Como os códigos A100, B102 ...
+
+
+LONG RAW
+2 Gigabytes - but now deprecated (provided Dados binários brutos de comprimento variável. (não interpretado por PL / SQL) for backward compatibility only)
+
+
+
+MLSLABEL
+Formato binário de uma etiqueta do sistema operacional. Este tipo de dados é usado com o Oracle confiável7
+
+BLOB
+8 TB to 128 TB (4 Gigabytes - 1) * (database Objeto binário grande block size)
+
+NCLOB
+8 TB to 128 TB (4 Gigabytes - 1) * (database Objeto de caráter nacional grande
+block size)
+
+CLOB
+8 TB to 128 TB (4 Gigabytes - 1) * (database Objeto grande de caráter block size)
+
+BFILE
+8 TB to 128 TB (4 Gigabytes - 1) * (database ponteiro para arquivo binário no disco block size)
+
+BINARY_FLOAT
+Magnitude:
+1.17549E-38F
+…
+3.40282E+38F
+
+Um tipo de dados numéricos de ponto flutuante de uma precisão de 32 bits. Cada valor 
+BINARY_FLOAT requer 4 bytes. Suporta os valores especiais infinito e NaN (não um número).
+
+BINARY_DOUBLE
+Magnitude:
+
+2.22507485850720E-308
+…
+1.79769313486231E+308
+
+Um tipo de dados numero de ponto flutuante de dupla precisão de 64 bits. Cada valor BINARY_DOUBLE requer 8 bytes. Suporta os valores especiais infinito e  NaN (não um número).
+
+XMLType
+
+Um tipo definido pelo sistema para armazenar dados binários XML armazenados In 11gR1 the limit is 2G/4G depending on internamente como um CLOB (começando com 11gR1 armazenado como um DB character set. BLOB)
+
+BOOLEAN
+Use either Number or CHAR
+True, False or NULL
+
+NUMBER(p,s)
+
+The precision p can range from 1 to 38. The scale s can range from -84 to 127
+Número com precisão p e escala s.
+
+PLS_INTEGER
+magnitude range is
+-2,147,483,647
+..
+2,147,483,647
+
+Números inteiros registrados Os valores PLS_INTEGER requerem menos armazenamento e oferecem melhor
+desempenho que os valores NUMBER.
+
+
+INTEGER
+Equivalente ao number com escala de zero.
+
+DATE
+from January 1, 4712 BC to December 31, 9999 AD.
+Faixa de data válida.
+
+
+TIMESTAMP (fractional_seconds_precision)
+Accepted values of fractional_seconds_precision are 0 to 9. (default = 6).
+
+o número de dígitos na parte fracionada do campo SECOND datetime.
+
+ACID E CRUD
+
+ACID - Propriedade das transações.
+
+Atomicidade - Uma transação é uma unidade atômica de processamento, ou ela é executada na sua totalidade, ou então nada é executado.
+
+Consistência - A execução de uma transação deve manter a consistência de um banco de dados.
+
+Isolamento - uma transação não deve tornar visível para outras transações as modificações feitas e um banco de dados até que ela seja encerrada com sucesso.
+
+Durabilidade - uma vez executada com sucesso, as alterações feitas por uma transação devem persistir, mesmo se houver falhas subsequentes no sistema.
+
+CRUD
+	CREATE - Criar
+	READ - Ler
+	UPDATE - Atualizar
+	DELETE - Deletar
+	
+
+CONSTRAINTS
+Constraints são utilizadas para especificar regras de armazenamento de dados nas tabelas e garantir integridade.
+
+NOT NULL
+Garante que uma coluna não receberá valor NULL.
+
+UNIQUE
+Garante que os valores em uma coluna sejam diferentes.
+
+PRIMARY KEY
+Chave única, linha exclusiva, combinação com.
+
+
+FOREIGN KEY
+Referencia o valor de um campo em determinada linha de outra tabela.
+
+DEFAULT
+Define um valor padrão para uma coluna quando nenhum valor é especificado.
+
+INDEX
+Usado para criar e recuperar dados do banco de dados com melhor perfomance.
+
+
+
+
+
+
+
