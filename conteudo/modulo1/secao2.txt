@@ -1,1 +1,70 @@
 Seção 2: SQL ANSI
+
+OPERADORES DE COMPARAÇÃO
+
+01_oper_comparacao.sql
+
+OPERADORES MATEMÁTICOS
+
++ Adição
+- Subtração
+* Multiplicação
+/ Divisão
+% Módulo - Retorna o resto inteiro de uma divisão. Ex: 12%5=2
+
+02_oper_matematicos.sql
+
+
+OPERADORES LÓGICOS PARTE I
+
+Operadores Lógicos / Filtros
+
+Os operadores lógicos testam a legitimidade de algumas condições. Os operadores lógicos, como operadores de comparação, retornam um tipo de dado boolean com um valor TRUE, FALSE ou UNKNOWN.
+
+
+
+WHERE
+Usada para extrair somente os registros/linhas que estiverem dentro das especificações da confição.
+
+AND
+TRUE se as duas expressões booleanas forem TRUE.
+
+BETWEEN
+TRUE se o operando estiver dentro de um intervalor.
+
+IN
+TRUE se o operando for igual a um  de uma lista de expressões.
+
+LIKE
+TRUE se o operando corresponder a um padrão.
+
+NOT
+Inverte o valor de qualquer outro operador booleano.
+
+OR
+TRUE se qualquer expressão booleana for TRUE.
+
+IS NULL
+TRUE se o valor for nulo.
+
+IS NOT NULL
+TRUE se o valor não for nulo.
+
+HAVING
+A cláusula HAVING foi adicionado ao SQL porque a palavra-chave WHERE não pode ser usada com funções agregadas.
+
+03_oper_filtros.sql
+
+Tabela SENSO:
+Importar Dados > base_dados_2010_2014.csv
+(Delimitador ; e codificação Cp1252. Estabelecer corresponbdência por posição).
+
+Tabela UF:
+Importar Dados > estados.csv
+(Delimitador ; e codificação Cp1252. Estabelecer corresponbdência por posição).
+
+
+OPERADORES LÓGICOS PARTE 2
+
+03_oper_filtros.sql
+
