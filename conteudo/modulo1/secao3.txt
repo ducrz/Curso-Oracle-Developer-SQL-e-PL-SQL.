@@ -1,1 +1,125 @@
 Seção 3: LANGUAGE STATEMENTS
+
+
+A linguagem SQL é dividida em quatro tipos de instruções de linguagem primárias: DML, DDL, DCL e TCL.
+
+
+Usando estas declarações, podemos definir a estrutura de um banco de dados através da criação e alteração de objetos de banco de dados, e podemos manipular dados em uma tabela através de atualizações ou eliminações.
+Nós podemos controlar qual usuário pode ler / escrever dados ou gerenciar operações.
+
+1 - DML (Data Manipulation Language)
+
+2- DDL (Data Definition Language)
+
+3- DCL (Data Control Language)
+
+4- TCL (Transacion Control Language)
+
+
+LANGUAGE STATEMENTS
+
+
+DML
+
+- SELECT
+- INSERT
+- UPDATE
+- DELETE
+
+
+DDL
+- CREATE
+- ALTER
+- DROP
+- TRUNCATE
+
+
+DCL
+- GRANT
+- REVOKE
+
+TCL
+- START TRANSACTION
+- COMMIT
+- SAVEPOINT
+- ROOLBACK
+
+
+1- DML (Data Manipulation Language)
+Os comandos DML são utilizados para o gerenciamento de dados dentro de objetos do banco.
+Alguns exemplos:
+
+		|DML|
+------------------------------------------------
+SELECT - recuperar dados do banco de dados.
+INSERT - inserir dados em uma tabela.
+UPDATE - atualiza os dados existente em uma tabela.
+DELETE - exclui registros de uma tabela.
+
+
+
+2- DDL (Data Definition Language)
+São usados para definir a estrutura do banco de dados ou esquema.
+Alguns exemplos:
+
+		|DDL|
+---------------------------------------------------
+CREATE - para criar objetos no banco de dados, o próprio banco de dados, tabelas, indíces, procedures, views, functions e triggers.
+ALTER - altera a estrutura da base de dados, o próprio banco de dados, tabelas e indíces.
+DROP - apaga objetos do banco de dados, o próprio banco de dados, tabelas, indíces, procedures, views, functions e triggers.
+TRUNCATE - remover todos os registros de uma tabela, incluindo todos os espaços alocados para os registros são removidos.
+
+
+
+3- DCL (Data Control Language)
+São usados para definir acesso/controle dos dados/objetos.
+Alguns exemplos:
+
+
+		|DCL|
+--------------------------------------------------------
+GRANT - atribui privilégios de acesso do usuário a objetos do banco de dados.
+REVOKE - remove os privilégios de acesso aos objetos obtidos com o comando GRANT.
+
+
+
+4- TCL (Transacion Control Language)
+São usados para gerenciar as mudanças feitas por instruções DML. Ele permite que as declarações sejam agrupadas em transações lógicas.
+
+		|TCL|
+---------------------------------------------------------
+COMMIT - salvar o trabalho feito.
+SAVEPOINT - identificar um ponto em uma transação para que mais tarde você possam efetuar um ROLLBACK.
+ROLLBACK - restaurar o banco de dados ao estado original desde o último COMMIT.
+
+
+
+
+DML
+
+1_dml.sql
+
+
+DDL PARTE 1
+
+2_ddl.sql
+
+
+DDL PARTE 2
+
+2_ddl.sql
+
+
+DCL GRANT
+3_dlc_grant.sql
+
+DCL REVOKE
+4_dcl_revoke_aula.sql
+
+TCL
+5_tcl_1.sql
+6_tcl_2.sql
+
+
+
+
