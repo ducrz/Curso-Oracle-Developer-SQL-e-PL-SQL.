@@ -1,1 +1,49 @@
 Seção 4: LINGUAGEM SQL
+
+OPERADOR UNION / UNION ALL
+
+O operador UNION é usado para combinar o comjunto de resultados de duas ou mais instruções SELECT.
+
+Cada instrução SELECT dentro UNION deve ter o mesmo número de colunas e do mesmo tipo.
+
+As colunas também devem ser tipos de dados semelhantes.
+
+As colunas em cada instrução SELECT também devem estar na mesma ordem.
+
+O operador UNION seleciona apenas valores distintos por padrão.
+
+Para permitir valores duplicados, use UNION ALL:
+
+UNION.sql
+
+
+JOINS
+Joins - Junções
+
+Esta cláusula é usada para combinar as linhas de duas ou mais tabelas baseando-se no relacionamento entre elas.
+
+Aqui estão os diferentes tipos de JOINs em SQL:
+
+- (INNER) JOIN: Retorna registros que têm valores correspondentes em ambas as tabelas.
+
+- LEFT (OUTER) GOIN: Retorna todos os registros da tabela à esquerda e os registros correspondentes da tabela da direita.
+
+- RIGHT (OUTER) JOIN: Retorna todos os registros da tabela da direita e os registros correspondentes da tabela da esquerda.
+
+join.sql
+
+SUBQUERYS
+
+
+SubQuerys - Consultas
+
+Uma subconsulta (ou mais conhecida, subquery) é uma instrução SELECT que está condicionada dentro de outra instrução SQL.
+
+Existem, no entando, quatro maneiras de introduzirmos uma subconsulta em uma instrução do tipo SELECT, que são:
+- Através de uma cláusula WHERE como sendo uma condição de pesquisa;
+- Em uma cláusula HAVING como condição de pesquisa;
+- Na cláusula FROM como uma especificação de tabela;
+- Na cláusula SELECT como uma especificação de coluna.
+
+
+subselects.sql
