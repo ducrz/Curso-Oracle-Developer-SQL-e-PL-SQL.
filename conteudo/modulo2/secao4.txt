@@ -47,3 +47,5 @@ Existem, no entando, quatro maneiras de introduzirmos uma subconsulta em uma ins
 
 
 subselects.sql
+
+

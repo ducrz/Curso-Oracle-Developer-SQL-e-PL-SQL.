@@ -1,1 +1,293 @@
 Seção 5: FUNÇÕES PADRÕES
+
+
+
+INTRODUÇÃO
+
+Funções Padrões / Nativas
+
+Classificação
+Controle de Fluxo
+Agregação
+Limite
+Conversão
+Caracteres
+Matemáticas
+Data/Hora
+Criptografia
+Informação
+
+AGREGAÇÃO PARTE 1
+
+As funções de agregação executam um cálculo em um conjunto de valores e retornam um único valor.
+Com exceção de COUNT, as funções de agregação ignoram valores nulos.
+As funções de agregação normalmente são usadas com a cláusula GROUP BY da instrução SELECT.
+As funções de agregação podem ser usadas como expressões apenas nos seguintes casos:
+
+A lista de seleção de uma instrução SELECT (uma subconsulta ou uma consulta externa).
+Uma cláusula HAVING.
+
+
+AVG
+Retorna a média dos valores em um grupo. Valores nulos são ignorados.
+
+MIN
+Retorna o valor mínimo na expressão. Pode ser seguido pela cláusula OVER.
+
+MAX
+Retorna o valor máximo na expressão.
+
+SUM
+Retorna a soma de todos os valores ou somente os valores DISTINCT na expressão.
+Sum pode ser usado exclusivamente com colunas numéricas. Valores nulos são ignorados.
+
+COUNT
+Retorna o número de itens de um grupo.
+
+STDDEV
+Retorna o desvio padrão estatísticos de todos os valores da expressão especificada.
+
+VARIANCE
+Determina a variância de n, ignorando valores nulos.
+
+agregacao.sql
+
+
+
+AGREGAÇÃO PARTE 2
+
+agregacao.sql
+
+
+FUNÇÃO CARACTERES PARTE 1
+Funções de Cadeia de Caracteres
+
+ASCII
+Retorna o valor do código ASCII do caractere mais à esquerda de uma expressão de caracteres.
+
+LTRIM
+Retorna uma expressão de caracteres depois de remover espaços em branco à esquerda.
+
+RTRIM
+Retorna uma cadeia de caracteres depois de truncar todos os espaços em branco à direita.
+
+TRIM
+Trunca espaços a direita e esquerda e retorna uma cadeia de caracteres.
+
+CONCAT
+Retorna uma cadeia de caracteres que é resultado da concatenação de dois ou mais valores.
+
+REPLACE
+Substitui todas as ocorrências de um valor da cadeia de caracteres especificado por outro valor da cadeia de caracteres.
+
+RPAD, LPAD
+Repete um valor da cadeia de caracteres um número especificado de vezes.
+
+UPPER
+Retorna uma expressão de caracteres com dados de caracteres em minúsculas convertidos em maiúsculas.
+
+LOWER
+Retorna uma expressão de caracteres com dados de caracteres em maiúsculas convertidos em minúsculas.
+
+REVERSE
+Retorna a ordem inversa de um valor da cadeia de caracteres.
+
+LENGTH
+Retorna o número de caracteres da expressão da cadeia de caracteres especificada, excluíndo espaços em branco à direita.
+
+SUBSTR
+Retorna uma substring de caracteres com dados de caracteres dentro do parâmetro informado.
+
+
+INITCAP
+Impôe uma letra maiúscula na primeira letra de cada palavra e minúsculas nas restantes.
+
+TRANSLATE
+Substitui um caracteres por outro.
+
+DECODE
+Decodifica a expressão se for verdade o valor da expressão.
+
+INSTR
+Devolve a posição da primeira ocorrência de string2 dentro de string1.
+
+
+caracteres.sql
+
+FUNÇÃO CARACTERES PARTE 2
+
+caracteres.sql
+
+
+FUNÇÃO DE CLASSIFICAÇÃO
+
+RANK
+As funções de classificação retornam um valor de classificação para cada linha em uma partição.
+Dependendo da função usada, algumas linhas podem receber o mesmo valor que outras. As funções de classificação não são determinísticas.
+
+NTILE
+Distribui as linhas de uma partição ordenada em um número de grupos especificado. Os grupos são numerados, iniciando em um. Para cada linha, NTILE retorna o número do grupo ao qual a linha pertence.
+
+DENSE_RANK
+Retorna a classificação de linhas dentro da partição de um conjunto de resultados, sem qualquer lacuna na classificação. A classificação de uma linha é um mais o número de classificações distintas que vêm antes  da linha em questão.
+
+
+ROW_NUMBER
+Retorna o número sequencial de uma linha em uma participação de um conjunto de resultados, iniciando em 1 para a primeira linha de cada partição.
+
+
+classificacao.sql
+
+
+FUNÇÕES DE CONTROLE DE FLUXO
+
+CASE
+Case operator
+
+NULLIF()
+Return NULL if expr1 = expr2
+
+
+controle_de_fluxo.sql
+
+
+FUNÇÕES MATEMÁTICAS
+
+ABS
+Uma função matemática que retorna o valor absoluto (positivo) da expressão numérica especificada.
+
+DBMS_RANDOM
+Retorna um valor flot pseudoaleatório de 0 à 1, exclusivo.
+
+ROUND
+Retorna o valor numérico, arredondado para o comprimento ou precisão especificados.
+
+TRUNC
+Trunca as casas decimais de uma expressão.
+
+SQRT
+Retorna a raiz quadrada de uma expressão.
+
+SIGN
+Retorna -1 para negativo, 0 para neutro e 1 para positivo, com o valor da expressão.
+
+POWER
+Eleva à potência de n o valor. Pode ser negativo.
+
+MOD
+Retorna o valor MOD, a sobra de uma expressão de divisão.
+
+EXP
+Devolve o valor 'e' elevado a n
+
+
+matematicas.sql
+
+
+FUNÇÕES DE CRIPTOGRAFIA
+
+RAWTOHEX
+Converte os caracteres para hexadecimal. Sendo uma função, aceita uma variedade bem ampla de tipos de dados: Long, Long RAW, CLOB, BLOB, BFILE e etc, retornando um valor VARCHAR2 com representação hexadecimal.
+
+DBMS_OBFUSCATION_TOOLKIT
+Esse pacote disponibiliza o método MD5 e outros bem interessantes.
+Por exemplo, a partir do Oracle8i está disponível a criptografia DES, enquanto no Oracle9i existe a opção da criptografia DES3.
+
+UTL_RAW
+Nesse ponto existe manipulação de dados, tendo como foco principal a conversão de tipos. Outras possíveis opções de uso estarão relacionadas com os valores de atributos, como comprimento, alutra, tamanho e outros.
+
+
+criptografia.sql
+
+
+FUNÇÃO LIMITE
+Rownum
+A cláusula SELECT ... limit é útil em grandes tabelas com milhares de registros.
+Atenção: Retornar uma grande quantidade de registros pode afetar o desempenho.
+
+SELECT * FROM employess WHERE rownum <=10;
+
+limite.sql
+
+
+FUNÇÕES DE CONVERSÃO
+
+CAST
+Converte uma expressão de um tipo de dados em outro.
+
+TO_CHAR(data)
+Converte data em String.
+
+
+TO_DATE(string)
+Converte string em data.
+
+NVL()
+Trata valor nulo.
+
+
+conversao.sql
+
+
+FUNÇÕES DE DATA PARTE 1
+
+sysdate
+Retorna a data e hora atual do servidor.
+
+As datas podem ir de 1 de janeiro de 4712 AC à 31 de Dezembro de 4712 DC. O Oracle armazena as datas em um formato numérico.
+
+FUNÇÕES QUE OBTÊM A DIFERENÇA DE DATA E HORA DO SISTEMA
+
+ADD_MONTHS
+Adiciona n meses de calendário a data. O número n têm que ser inteiro e pode ser negativo.
+
+MONTHS_BETWEEN
+Determina o número de meses entre data1 e data2. O resultado pode ser positivo ou negativo.
+
+LAST_DAY
+Devolve o último dia do mês da data1.
+
+NEXT_DAY
+Devolve a data do próximo dia da semana especificado por c e a seguit a data1.
+
+UTILIZAÇÃO DE OPERADORES ARITMÉTICOS
+
+date + number
+Adiciona um número de dias a data, retornando uma data.
+
+date-number
+Subtrai um número de dias da data, retornando uma data.
+
+date - date
+Subtrai um número de dias da data, retornando uma data.
+
+date + number /24
+Adiciona um número de horas a data, retornando uma data.
+
+
+É possível realizar cálculos com datas, utilizando operadores aritméticos.
+
+data_1.sql
+
+
+
+FUNÇÕES DE DATA PARTE 2
+
+data_2.sql
+
+
+FUNÇÕES DE INFORMAÇÕES DO SISTEMA
+
+
+USER
+Mostra o nome do utilizado Oracle que abriu a sessão.
+
+UID
+Mostra o número que a base de dados atribuiu ao utilizador.
+
+USERENV(arg)
+Envolve dados da sessão atual, os valores de argumentos podem ser vários.
+
+func_info.sql
+
+
