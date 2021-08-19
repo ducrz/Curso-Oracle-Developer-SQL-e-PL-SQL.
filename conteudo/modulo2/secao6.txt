@@ -1,1 +1,37 @@
 Seção 6: VIEWS E TEMP TABLE
+
+
+VIEWS
+
+A VIEW pode ser definida como uma tabela virtual composta por linhas e colunas de dados, vindo de tabelas relacionadas em uma query (ou um agrupamento de SELECTs, por exemplo.
+As linhas e colunas da view são geradas dinamicamente no momento em que é feita uma referência a ela.
+As views podem vir de uma ou mais tabelas, ou até mesmo de outras views.
+
+Obs: podemos realizar qualquer query por meio de views, assim como alterar dados por meio delas, o que é feito com algumas restrições.
+
+
+VANTAGENS DAS VIEWS
+
+REUSO
+As views são objetos de caráter permanente.
+
+SEGURANÇA
+As views permitem que ocultemos determinadas colunas de uma tabela.
+
+SIMPLIFICAÇÃO DE CÓDIGO
+As views nos permitem criar um código de programação muito mais limpo, na medida em que podem conter por exemplo, um SELECT complexo.
+
+views.sql
+
+TEMP TABLE
+
+TABELAS TEMPORÁRIAS
+
+TEMPORARY
+Indica que a tabela criada será temporário, o que significa que ela expira assim que a sessão ou transação no banco de dados Oracle terminar.
+
+Uma tabela temporária é uma tabela com vida útil de uma sessão ou transação.
+Ela está vazia quando a sessão ou transação começa e descarta os dados ao fim da sessão ou transação.
+Uma tabela temporária é associada à trnasação. Isto significa que ao término da transação os dados da tabela são perdidos, porém sua descrição permanece gravada no banco de dados mesmo após a mudança de sessão.
+
+temporaria.sql
