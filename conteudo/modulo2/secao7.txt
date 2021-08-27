@@ -1,1 +1,350 @@
 Seção 7: PL/SQL
+
+
+É uma linguagem de programação procedural da Oracle que estende a linguagem SQL.
+
+A linguagem PL/SQL inclui a linguagem procedural para banco de dados, tais como: loop, while, for, arrays e etc.
+
+Essa linguagem permite também a declaração de criação de variáveis, constantes e tipos.
+
+Podemos usar PL/SQL em:
+
+BLoco anônimo, Procedures, Triggers, Package, Function e Types.
+
+
+*Estrutura do Bloco PL/SQL
+
+
+DECLARE - Opcional
+**Variáveis, cursores, exceções definidas pelo usuário.
+
+BEGIN - Obrigatório
+-Instruções SQL
+- Instruções PL/SQL
+
+EXCEPTION - Opcional
+**Ações que serão desempenhadas quando ocorrem erros
+
+END - Obrigatório
+
+
+TIPOS DE BLOCOS
+
+Toda unidade PL/SQL compreende um ou mais blocos. Onde esses blocos podem ser inteiramente separados ou aninhados um dentro do outro.
+Existem três tipos de blocos:
+
+
+ANÔNIMO
+
+BEGIN
+-statements
+[EXCEPTION]
+END;
+
+
+PROCEDIMENTO
+
+PROCEDURE name
+IS
+BEGIN
+-statements
+[EXCEPTION
+END;
+
+
+FUNÇÃO
+
+FUNCTION name
+RETURN datatype
+IS
+BEGIN
+-statements
+RETURN value;
+[EXCEPTION]
+END;
+
+
+- Blocos anônimos são blocos sem nomes. Eles são declarados em um ponto do aplicativo onde eles devem ser executados e são passados para o mecanismo PL/SQL para ser executados em tempo de execução.
+
+
+Como?
+
+PL/SQL executa o bloco de comandos enviados. Esta característica aumenta a perfomance.
+
+
+PL/SQL adiciona pode de processamento procedural no desenvolvimento de aplicativos e, podem ser migrados para qualquer servidor que execute o banco de dados Oracle, aumentando a produtividade.
+
+
+
+CONJUNTOS DE CARACTERES
+
+
+LETRAS
+A-Z,a-z
+
+Dígitos
+0-9
+
+Símbolos
+~ !@#$%*()_-+=[]{}:;"<>,.?^ 
+
+
+PL/SQL é case-insensitive(o compilador enxerga tudo como uppercase) e aceita os caracteres: A-Z, a-z, 0-9, whitespace (tab, espaço, newline, carriage return) e símbolos(~ !@#$%*()_-+=[]{}:;"<>,.?^ ).
+Alguns desses símbolos têm significado especial em SQL e em PL/SQL:
+
+; = termina os statementes e as declarações.
+% = indicador de atributo.
+@ = indicador de localização.
+<< e >> = delimitadores de labels.
+: = é indicador de atribuição de valor as variáveis;
+=> é operador de associação para notação posicional.
+.. é operador de range.
+
+
+
+VARIÁVEIS
+
+DECLARANDO VARIÁVEIS:
+Adote padrões para dar nomes a variáveis. Por exemplo: vFrase para representar uma variável e vFrase para representar uma variável de coleção;
+Se usar uma variável NOT NULL, inicie com algum valor válido;
+Declarar uma variável que facilite a leitura e manutenção do código;
+
+Não utilizar uma variável com o mesmo nome de uma coluna de tabela referenciada no bloco.
+
+
+PL/SQL:
+Dica: Para inicializar uma variável você pode utilizar o operador := ou a palavra chave DEFAULT, como nos exemplos abaixo:
+
+VFrase varchar2(30) := 'Hello World';
+ou
+vFrase varchar2(30) DEFAULT "Hello World";
+
+
+
+
+DECLARE
+	vDataNasc DATE;
+	vCodFunc NUMBER(2) NOT NULL := 10;
+	vCidade VARCHAR2(30) := 'CRUZEIRO';
+	vPI CONSTANT NUMBER := 3.1415;
+	vBloqueado BOOLEAN := FALSE
+BEGIN
+
+1_DECLARA_VARIAVEIS.SQL
+
+
+
+ATRIBUTOS TYPE E ROWTYPE
+
+
+ATributos %TYPE %ROWTYPE
+
+Quando declaramos uma variável PL/SQL para manipular valores que estão em tabelas, temos que garantir que esta variável seja do mesmo tipo e tenha a mesma precisão do campos que será referenciado.
+Se isto não acontecer, um erro PL/SQL ocorrerá durante a execução.
+Para evitar isto, podemos utilizar o atributo %TYPE para declarar a variável de acordo com a declaração de outra variável ou coluna de uma tabela.
+O atributo %TYPE é mais utilizado quando o valor armazenado na variável for um valor derivado de uma coluna de uma tabela do banco.
+
+EX:
+
+DECLARE
+	V_Id_Emp HR.EMPLOYEE.EMPLOYEE_ID%TYPE; -- CAMPO
+	v_Emp HR.EMPLOYEE%ROWTYPE; -- TABELA TODA
+BEGIN
+NULL;
+END;
+
+
+2_atrib_type_rowtype.sql
+
+
+
+TIPOS DE REGISTROS
+
+Um registro é uma coleção de valores individuais que estão relacionados de alguma forma. Com frequência os registros são usados para representar uma linha de uma tabela e, assim o relacionamento baseia-se no fato de que todos os valores vêm da mesma linha.
+Cada campo de um registro é exclusivo e tem seus próprios valores. Um registro como um todo não tem um valor.
+
+
+
+DECLARE
+--Definição de tipos
+TYPE TFuncionario IS RECORD(
+Nome VARCHAR2(40).
+Depto VARCHAR2(20),
+Salario NUMBER(10,2)
+);
+--Declaração de variáveis
+vFunc TFuncionario;
+BEGIN
+
+
+3_tipo_registro.sql
+
+
+
+ESCOPO DE VARIÁVEIS
+
+Escopo de uma variável é a região de um programa no qual podemos referenciar a variável.
+Variáveis declaradas em blocos PL/SQL são consideradas local para o bloco onde estão declaradas e global para todos os seus sub-blocos. Se uma variável global é redeclarada em um sub-bloco, ambos permanecem no escopo. Dentro do sub-bloco, somente a variável local é visível e para referenciar a variável global devemos utilizar uma tag, que será vista a seguir.
+
+Entretanto, não podemos declarar uma variável duas vezes no mesmo bloco, mas podemos declarar a mesma variável em dois blocos diferentes. As duas variáveis são distintas, ou seja, qualquer mudança em uma, não irá afetar a outra.
+
+Um bloco não pode referenciar variáveis declaradas em outros blocos de mesmo nível, porque estas variáveis não são locais e nem globais para este bloco.
+
+
+
+
+4_escopo_var.sql
+
+
+
+IDENTIFICADORES
+
+Um identificador é simplesmente um nome para um objeto PL/SQL, ou uma palavra reservada. As regras para os identificadores são as seguintes:
+
+REGRAS IDENTIFICADORES
+
+Máximo de 30 caracteres
+Devem começar com uma letra
+Podem incluir $, _ e #
+Não podem conter whitespace
+
+
+Adote convenções de nomes para seus identificadores, por exemplo prefixar prâmetros com p_, funções com fn_, triggers com trg_, packages com pkg_, variáveis com v_, etc.
+
+As palavras reservadas especiais do SQL e da PL/SQL não podem ser utilizadas, o compilador irá acusar erro.
+
+Para conhecer a lista de palavras reservadas, pesquisa a view V$RESERVED_WORDS e evite usá-las!
+
+palavras-reservadas-pl-sql.sql
+
+
+Literais
+Literais são valores que não são representados por um identificador, ou seja, são apenas simples valores. Os literais podem ser: Numeros, strings, time interval, Boolean e NULL.
+
+
+Literais String
+Literais de string devem ser delimitados por aspas simples e são case-sensitive.
+
+Literais Numéricos
+Literais numéricos podem ser números inteiros ou números reais (quando têm parte fracionária, mesmo que a parte fracionária seja 0).
+
+
+Literais Booleanos
+São as representações do verdadeiro e falso, TRUE e FALSE, e não devem ter aspas simples ou duplas.
+
+
+Delimitadores;
+Os statements e declaratios da PL/SQL são delimitados por um ;
+
+
+Comentarios
+Podem ser em uma única linha, iniciando com dois hífens (--) ou de múltiplas linhas, entre /* e */.
+
+
+BLOCOS ANÔNIMOS
+
+Estrutura do Bloco Anônimo
+
+BEGIN
+--statements
+[EXCEPTION]
+END;
+
+5_bloco_anonimo.sql
+
+
+ESTRUTURA IF-TEHN /IF-THEN-ELSE /IF-THEN-ELSIF
+
+SINTAXE BÁSICA DO IF-THEN
+
+IF condition THEN
+	{... As instruções que serão executadas vão aqui quando a condição é TRUE...}
+END IF;
+
+
+SINTAXE BÁSICA DO IF-THEN-ELSE
+IF condition THEN
+	{... As instruções que serão executadas vão aqui quando a condição é TRUE ...}
+ELSE
+	{... As instruções que serão executadas vão aqui quando a condição é FALSE ...}
+END IF;
+
+SINTAXE BÁSICA DO IF-THEN-ELSIF
+IF condition1 THEN
+	{... As instruções que serão executadas vão aqui quando a condição é TRUE ...}
+ELSIF condition2 THEN
+	{... As instruções que serão executadas vão aqui quando a condição é TRUE ...}
+END IF;
+
+6_estrutura_if.sql
+
+
+
+ESTRUTURA CASE WHEN
+
+A estrutura CASE é uma forma mais compacta para realizar a avaliação de uma única condição e escolher entre algumas ações alternativas. No caso de termos mais de dois IFs, de certa forma, passa a ser mais aplicável a utilização de CASES.
+
+CASE [expression1]
+WHEN condition_1 THEN result_1
+WHEN condition_2 THEN result_2
+WHEN condition_n THEN result_n
+ELSE result
+END
+
+
+7_case.sql
+
+
+
+GOTO
+Com a declaração GOTO, o controle é transferido para a label incondicionalmente, onde temos também que o label deve ser único dentro de um escopo e deve ser posto antes de uma declaração executável ou  mesmo de um bloco PL/SQL.
+
+Sintaxe:
+GOTO Label;
+
+O label tem por finalidade identificar tanto um bloco quando uma declaração.
+Caso o nosso label não esteja dentro do bloco no qual estejamos trabalhando, a declaração GOTO irá transferir o controle para o primeiro bloco que contiver na declaração da label.
+
+
+8_goto.sql
+
+
+LOOP FOR
+
+
+ESTRUTURAS DE REPETIÇÃO - LOOP FOR
+
+[label] FOR index IN [REVERSE] menor_indice..indice_maximo LOOP
+	Declarações
+END LOOP [label];
+
+Podemos encontrar na sintaxe apresentada os seguintes elementos:
+
+Index: é o nome dado a variável declarada implicitamente que é utilizada localmente na declaração do laço FOR;
+
+Menor_indice(limite inferior) e maior_indice(limite superior): estes são valores inteiros que são avaliados dentro de um laço. Os valores que são postos estarão dentro desse limite e são temporários.
+
+Label: Uma label identifica uma declaração dentro do laço FOR, como é o caso de instruções CONTINUE, EXIT que podem referenciar a label. A utilização destes normalmente melhora a legibilidade do código, principalmente quando as instruções do laço são instruções aninhadas.
+
+
+9_for.sql
+
+LOOP WHILE
+
+ESTRUTURAS DE REPETIÇÃO - LOOP WHILE
+
+WHILE condition
+LOOP
+	{... statements ...}
+END LOOP;
+
+A palavra "condition", que no caso é a condição que será testada a cada iteração do loop. Caso esssa condição seja avaliada como TRUE, o corpo do loop será executado; caso esta condição seja FALSE, o loop serão encerrado.
+
+Os "statements" são as declarações do código que estaremos executando a cada passagem do loop. Como podemos perceber, a condição é realizada antes de entrarmos no loop, o que, em caso de ser FALSE, o código pode não ser executado nenhuma vez.
+
+10_while.sql
+
+LOOP CONTINUE
+
+11_Loop_continue.sql
+
