@@ -1,1 +1,16 @@
 Seção 13: PACKAGES
+
+Um package é uma coleção de objetos PL/SQL agrupados logicamente sob o nome de pacote.
+Os packages podem incluir procedures, functions, cursores, declarações, tipos e também variáveis.
+
+Os packages geralmente possuem duas partes, uma que refere-se a spec e a segunda parte que é o body.
+
+A spec é o que chamamos de interface para o package. É nela que declaramos os tipos, variáveis, constantes, exceções, cursores e subprogramas que poderão ser referenciados a partir de partes externas ao package.
+
+Por outro lado, no body definimos as consultas para os cursores e o código para os subprogramas. Em alguns casos pode ser que não exista a necessidade de ter um body.
+
+Package PL/SQL é um grupo de funções relacionadas, procedimentos, tipos, cursores, dentre outros.
+Os packages são como uma biblioteca, pois uma vez escrito é armazenado no banco de dados Oracle e pode ser usado por muitas aplicações.
+
+
+packages.sql

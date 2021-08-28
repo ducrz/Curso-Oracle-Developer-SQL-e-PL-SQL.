@@ -1,1 +1,60 @@
 Seção 12: TRIGGERS
+
+TIPOS DE TRIGGERS
+
+Os TRIGGERS podem ser do tipo ROW LEVEL (linha) ou STATEMENT (tabela). Além disso, os Triggers podem ocorrer (BEFORE) antes ou (AFTER) depois que a ação tenha ocorrido, e por fim podem ocorrer para as ações de INSERT, UPDATE e DELETE em uma tabela.
+
+
+ROW LEVEL (Linha)
+Os triggers do tipo row level são utilizados para operações como:
+Gravações de LOGS de auditoria de uma aplicação;
+Verificação de dados (consistência);
+Implementação de integridade referencial;
+
+
+STATEMENT (Tabela)
+Os triggers do tipo STATEMENT tem a finalidade de tratar a execução de ações sobre tabelas independentemente de quantas linhas forem afetadas. Através deste tipo de Trigger podemos registrar a execução de comandos INSERT, UPDATE e DELETE contra tabelas que tenham Triggers contemplando essas ações.
+
+
+
+TRIGGERS - ELEMENTOS
+
+Tempo
+Quando o trigger dispara em relação ao evento de acionamento (DML).
+VALORES: BEFORE, AFTER
+
+Evento de acionamento
+Quais operações de manipulação de tabela (DML) disparam o trigger.
+Valores: INSERT, UPDATE e DELETE.
+
+Abrangência do Trigger
+Quantas vezes o corpo do trigger será executado.
+Valores: de linha(for each row) e de instrução(*).
+
+Corpo do Trigger
+Que ações serão executadas.
+Valores: Bloco PL/SQL
+
+
+MODIFICADORES OLD E NEW
+
+No caso de Triggers de linha, pode-se fazer referência a valores contidas nas colunas e com isso podemos querer saber os valores antes das alterações e depois dos valores efetivamente alterados. Isso vale na ação de UPDATE, nos casos de INSERT e DELETE os valores de OLD(INSERT) e NEW(DELETE) são nulos. Estes modificadores podem ser usados APENAS em TRIGGERS. Não podemos usá-los em procedures, functions ou packages.
+Os valores são referenciados da seguinte forma: :OLD.nomecoluna e :NEW:nomecoluna.
+Não importa se o trigger for BEFORE ou AFTER, os modificadores OLD e NEW não são afetados.
+
+OPERADORES INSERTING, UPDATING E DELETING
+
+Podemos criar TRIGGERS para ser disparados para várias ações de banco de dados.
+Dessa forma como podemos diferenciar uma ação de insert de outra de delete ou ainda update. Estes modificadores podem ser feitos apenas dentro de triggers.
+
+RESTRIÇÕES
+
+Não podemos realizar os comandos COMMIT, ROLLBACK e SAVEPOINT em um trigger, mesmo que seja uma procedure executada em um trigger.
+
+Não podemos fazer select na mesma tabela que sofre a ação de um trigger, pois isso pode provocar um erro chamado MUTANT TABLE. Mesmo porque se quisermos saber o valor de uma coluna do registro que está sendo tratado em um trigger basta colocar :new.nomecoluna ou :old.nomecoluna para ter respectivamente os valores atuais e anteriores a alteração.
+
+Triggers tornam as operações mais lentas, isso ocorre principalmente em casos de triggers de linha.
+
+
+
+01_trigger.sql
