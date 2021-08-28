@@ -1,1 +1,42 @@
 Seção 10: FUNÇÕES
+
+
+FUNCTIONS
+
+Uma function é um bloco PL/SQL muito semelhante a uma procedure. O que podemos entender de início entre esses dois tipos de blocos é que os blocos functions retornam valores e as procedures podem ou não retornar um valor. As functions tem duas características que diferem das procedures, as quais não podemos deixar de tratar.
+
+- As functions sempre retornam valores.
+- Functions são usadas como parte de uma expressão.
+
+
+CREATER [OR REPLACE] FUNCTION function_name
+[(parameter_name)[IN | OUT | IN OUT] type [, ...]]
+RETURN return_datatype
+{IS | AS } BEGIN
+	<function_body>
+END [function_name];
+
+
+
+- CREATE [OR REPLACE] FUNCTION: Caso uma function já exista com o mesmo nome, ela será reescrita devido ao termo 'replace'. Caso contrário, ela será criada de acordo com o termo 'create'.
+
+- Function_name: Será o nome atribuído para essa função.
+- Parameters: alista opcional de parâmetros contém os nomes, os modos e os tipos que esses parâmetros terão. O IN representa o valor que será passado de fora, já o OUT representa que este parâmetro será utilizado para retornar um valor de fora do procedimento.
+- Return_datatype: é o tipo de retorno que será utilizado, sendo este SQL ou PL/SQL. Podemos neste caso utilizar referências como o %TYPE ou %ROWTYPE se necessário, ou mesmo utilizar qualquer tipo de dados escalar ou composto.
+- IS/AS: por converção, temos o 'is' para a criação de funções armazenadas e o 'as' quando criamos pacotes (packages);
+-function_body: contém o bloco PL/SQL que inicia com a cláusula BEGIN e finaliza com END [function_name], e executa neste momento todas as instruções necessárias.
+
+
+
+
+funcoes1.sql
+
+funcoes2.sql
+
+funcoes3.sql
+
+funcoes4.sql
+
+funcoes5.sql
+
+fun-es6.sql

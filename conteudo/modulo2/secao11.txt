@@ -1,1 +1,40 @@
-Seção 11: FUNÇÕES
+Seção 11: PROCEDURES
+
+Uma stored procedure é um bloco de instruções PL/SQL que executa uma ou mais tarefas específicas. Elas são bem similares com as procedures de outras linguagens de programação.
+Uma procedure normalmente possui um cabeçalho e um corpo. O cabeçalho consiste do nome de parâmetros ou variáveis que serão passadas para a procedure. Já o corpo consiste da declaração de uma seção, execução de uma seção e uma seção de exceções muito similar a um bloco geral da PL/SQL. Uma procedure pode ou não ter um valor de retorno. Normalmente as procedures são criadas dentro de pacotes ou em blocos PL/SQL.
+Podemos passar os parâmetros para uma procedure de três maneiras:
+
+PARÂMETROS IN - Passamos o valor na própria procedure.
+PARÂMETROS OUT - Recebemos o valor à partir da chamada de blocos externos.
+PARÂMETROS IN OUT - Passamos um valor inicial para a procedure e recebemos de volta uma atualização.
+
+
+CREATE [ OR replace]
+PROCEDURE proc_name [list OF parameters]
+IS
+	declaration SECTION
+BEGIN
+	execution SECTION
+EXCEPTION
+EXCEPTION SECTION
+END;
+
+o 'IS' marca o início do corpo de uma procedure e é bem similar ao DECLARE de um bloco anônimo PL/SQL. O código criado entre o IS e o BEGIN forma a seção de declaração da procedure.
+
+
+
+
+proc1.sql
+
+proc2.sql
+
+proc3.sql
+
+proc4_insert.sql
+
+PROC_5_CRUD.sql
+
+tabela_estoque.sql
+
+PROC_ESTOQUE.sql
+
