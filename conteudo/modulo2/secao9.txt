@@ -1,1 +1,69 @@
 Seção 9: CURSORES PL/SQL
+
+Os cursores da PL/SQL fornecem um modo pelo qual seu programa pode selecionar várias linhas de dados do banco de dados e depois processar cada linha individualmente. Especificamente, um cursor é um nome atribuído pela Oracle para cada declaração SQL que é processada. Esse nome fornece à Oracle um meio de orientar e controlar todas as fases do processamento da SQL.
+
+CONCEITOS BÁSICOS
+
+Existem dois tipos de cursores:
+CURSOR IMPLÍCITO
+São cursores declarados pelo PL/SQL implicitamente para todos comando DML e comandos SELECT no PL/SQL, independente da quantidade de registros processadas. Ele precisa fazer isso para gerenciar o processamento da declaração SQL.
+
+CURSOS EXPLÍCITO:
+Cursores definidos pelo usuário para manipular registros recuperados por declarações SELECT.
+
+
+DECLARE =>  OPEN =>  EMPTY? => YES => CLOSE
+	       | <==== NO
+	    
+1- Declare o cursor nomeando o mesmo e defina a estrutura da consulta que será realizada por ele;
+2- Através do comando OPEN, o cursor é aberto e executa a consulta que recuperará o conjunto ativo do banco de dados;
+3- Com o comando FETCH, capturamos os dados do registro corrente para utilizarmos em nosso programa.
+A cada comando FETCH, devemos testar se ainda existe registro no cursor e abandonar o LOOP do cursor através do comando EXIT, caso não exista (mais adiante veremos como verificar isso);
+4- Quando a manipulação dos dados do cursor for finalizada, ao abandonar o LOOP do cursor, devemos fechá-lo através do comando CLOSE, que libera as linhas do cursor.
+
+
+ATributos de cursores explícitos
+
+%rowcount
+Mostra o número de linhas do cursor
+
+%found
+Retorna TRUE se o mais recente FETCH retornar uma linha.
+
+%notfound
+Retorna TRUE se o mais recente FETCH não retornar uma linha.
+
+%isopen
+Retorna TRUE se o cursor estiver aberto.
+
+
+Cursores explícitos automatizados (LOOP Cursor FOR)
+
+Os LOOPs Cursor FOR são ideais quando você quer fazer o LOOP em todos os registros retornardos pelo cursor.
+Com o LOOP Cursor FOR você não deve declarar o registro que controla o LOOP. Da mesma forma, você não deve usar o LOOP Cursor FOR quando as operações do cursor precisam ser tratadas manualmente.
+
+Um LOOP Cursor FOR faz as seguintes coisas implicitamente:
+1- Declara o índice do LOOP;
+2- Abre o cursor;
+3- Faz o FETCH da linha seguinte à partir do cursor para cada iteração do LOOP;
+4- Fecha o cursor quando todas as linhas são processadas ou quando o Loop É ENCERRADO;
+
+Um LOOP Cursor FOR processa linhas em um cursor explícito. Isto é, uma facilidade por que o cursor é aberto, linhas são carregadas em cada iteração do LOOP, o LOOP é finalizado quando a última linha é processada e o cursor é fechado, automaticamente.
+
+ATENÇÃO:
+Não declare o registro que controla o LOOP, porque ele é declarado implicitamente;
+Não use o LOOP Cursor FOR quando as operações do cursor tiver que ser manipuladas explicitamente.
+    
+CURSOR1.SQL
+
+CURSOR2.SQL
+
+CURSOR3.SQL
+
+CURSOR4.SQL
+
+CURSOR5.SQL
+
+CURSOR6.SQL
+
+CURSOR7.SQL

@@ -1,1 +1,115 @@
 Seção 8: EXCESSÕES
+
+Eventualmente o servidor Oracle ou o aplicativo do usuário causa um erro durante o processamento em runtime. Tais erros podem surgir de falhas de hardware ou rede, erros lógicos de aplicativo, erros de integridade de dados e de muitas outras fontes. Esses erros são conhecidos como exceções, ou seja, esses eventos indesejados são exceções do processamento normal e esperado.
+
+
+Funcionamento Geral
+Geralmente, quando um erro ocorre, o processamento do bloco PL/SQL é imediatamente encerrado.
+O processamento corrento não é concluído. 
+A Oracle permite que você esteja preparado para esses erros e implemente lógica nos programas para lidar com erros.
+
+Existem três tipos de exceções na PL/SQL:
+Erros predefinidos da Oracle;
+Erros não definidos da Oracle;
+Erros definidos pelo usuário.
+
+
+Erros predefinidos da Oracle
+
+no_data_found
+A SELECT de linha única não retornou dados.
+
+too_many_rows
+A SELECT de linha única retornou mais de uma linha.
+
+invalid_cursor
+Houve a tentativa de operação ilegal de cursor.
+
+value_error
+Ocorreu um erro de aritmética, conversão, truncagem ou restrição.
+
+invalid_number
+A conversão de uma string para um número, falhou.
+
+zero_divide
+Ocorreu uma tentativa de dividir por zero.
+
+dup_val_on_index
+Houve uma tentativa de inserir, em duplicata, um valor em uma coluna(ou um conjunto de colunas) que possui um índice exclusivo (UNIQUE KEY ou PRIMARY KEY).
+
+cursor_already_open
+Houve uma tentativa de abrir um cursor que foi aberto anteriormente.
+
+not_logged_on
+Uma chamada de banco de dados foi feita sem o usuário estar conectado ao Oracle.
+
+transaction_backed_out
+Uma parte remota de uma transação teve "rollback".
+
+login_denied
+Um login no banco de dados Oracle falhou por causa de um nome de usuário e/ou senha inválidos.
+
+program_error
+A PL/SQL encontrou um problema interno.
+
+storage_error
+A PL/SQL ficou sem memória ou a memória está corrompida.
+
+timeout_on_resource
+Um timeout ocorreu enquanto o Oracle estava esperando por um recurso.
+
+rowtype_mismatch
+Uma variável de cursor não é compatível com a linha de cursor.
+
+Others
+Uma declaração catchall que detecta um erro que não foi detectado nas exceções anteriores.
+
+
+BEGIN
+...
+EXCEPTION
+WHEN NO_DATA_FOUND THEN
+	Comando1;
+	Comando2;
+...
+WHEN TOO_MANY_ROWS THEN
+	Comando1;
+	Comando2;
+...
+WHEN OTHERS THEN
+	Comando1;
+	Comando2;
+END;
+/
+
+Conseguimos capturar erros não definidos pelo servidor Oracle declarando-os primeiro ou usando o manipulador OTHERS. A exceção declarada é invocada implicitamente. No PL/SQL, o PRAGMA EXCEPTION_INIT() "diz" para o compiulador associar uma exceção com um número de erro Oracle.
+Isto permite referenciar em qualquer exceção interna pelo nome e escrever um manipulador específico para isto.
+IMPORTANTE: PRAGMA é uma palavra reservada e uma diretiva de compilação que não é processada quando um bloco é executado. Ele direciona o compilador do PL/SQL para interpretar todas as ocorrêsncias de nomes de exceção dentro de um bloco como número de erros do servidor Oracle.
+
+
+Um usuário pode levantar explicitamente uma exceção usando o comando RAISE. Esse procedimento deve ser usado apenas quando a Oracle não levanta sua própria exceção ou quando o processamento não é desejado ou é impossível de ser completado.
+As etapas para levantar e tratar um erro definido pelo usuário, são os seguintes:
+1- Declarar o nome para a exceção de usuário dentro da seção de declaração do bloco;
+2- Levantar a exceção explicitamente dentro da parte executável do bloco, usando o comando RAISE;
+3- Referenciar a exceção declarada com uma rotina de tratamento de erros.
+
+Quando uma exceção ocorre, podemos identificar o código de erro ou a mensagem de erro usando duas funções.
+Baseados nos valores do código ou mensagem, podemos decidir qual ação tomar baseada no erro.
+
+As funções são:
+SQLCODE: Retorna um valor numérico para o código de erro.
+SQLERRM: Retorna um caractere contendo a mensagem associada com o número do erro.
+
+
+A função SQLCODE retorna o código de erro da exceção.
+
+SQLERRM, retorna a mensagem de erro correspondente ao código de erro da exceção.
+
+Quando nenhuma exceção foi levantada, o valor de SQLCODE é 0(zero) e quando a exceção foi declarada pelo usuário, o valor é 1;
+
+
+
+TRATANDO EXCESSÕES
+
+
+EXCEP.SQL
