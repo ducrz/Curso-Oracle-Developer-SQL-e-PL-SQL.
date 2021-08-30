@@ -1,1 +1,23 @@
 Seção 15: EXTRA - BÔNUS
+
+Pivot - Transformando linhas em colunas
+
+PIVOT apresenta as informações em um relatório com referências cruzadas com formato de planilha eletrônica a partir de qualquer tabela relacional usando o código SQL.
+
+Funções de Agregação
+SUM, COUNT, MIN, MAX or AVG
+
+Operador
+IN(expr1, expr2, ... expr_n)
+  Lista os valores do cabeçalho
+
+Subquery
+Pode ser utilizado para lista de valores.
+
+
+pivot.sql
+
+Orientações Finais / Certificado de conclusão.
+
+
+FIM DO CURSO!

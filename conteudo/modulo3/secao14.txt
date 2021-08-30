@@ -1,1 +1,268 @@
 Seção 14: PROJETO - MINI ERP MULTI EMPRESAS
+
+
+OVERVIEW PROJETO
+
+ANÁLISE DE REQUISITOS
+Criação de documentos, minimundos e modelos externos.
+- A primeira etapa do projeto de banco de dados é a identificação dos requisitos que o banco de dados deve atender.
+
+
+
+PROJETO CONCEITUAL
+Criação de Modelo Conceitual.
+Baseado na especificação de requisitos criados na etapa anterior. À partir deste insumo de informações é gerado um esquema conceitual do banco de dados. Esquema conceitual é uma visão macro do banco de dados, uma descrição de alto nível da estrutura. Os modelos de Entidade-Relacionamento são muito utilizados.
+
+
+PROJETO LÓGICO
+Criação de modelo interno.
+Mapeamos o conceito dos modelos de entidade-relacionamentos em objetivos de banco de dados. Nesta fase criamos os modelos internos de banco de dados, com detalhes sobre tabelas, relacionamentos, regras, tipos de dados das colunas (tipo, tamanho, obrigatoriedade, ...).
+
+
+PROJETO FÍSICO
+Criação de scripts, modelos físicos, estratégias de armazenamento e Backup.
+Parte final do projeto de banco de dados, nesta etapa define-se detalhes técnicos da implementação do banco de dados, por exemplo a forma como os dados serão armazenados, os scripts para a criação dos objetos no banco de dados (tabelas, visões, colunas, rotinas, ...), permissão de acesso de usuários, etc.
+
+
+ERP: USUÁRIOS, PRODUÇÃO, SUPRIMENTOS, RH, FINANCEIRO, COMERCIAL E FISCAL.
+
+
+CADASTROS COMPLEMENTARES
+- CLIENTES
+- FORNECEDORES
+- MATERIAL
+- TIPO_MAT
+- CIDADES
+- REGIAO
+
+SEGURANÇA (ACESSO)
+- USUARIOS
+- AUDITORIA_SALARIO
+
+
+PRODUÇÃO
+- ORDEM_PRODUCAO
+- APONTAMENTOS
+- ESTRUTURA
+- CONSUMO
+
+
+SUPRIMENTOS
+- ESTOQUE
+- PED_COMPRAS
+- PED_COMPRAS_ITENS
+- ESTOQUE_LOTE
+- ESTOQUE_MOV
+- PED_COMPRA
+- PED_COMPRA_ITENS
+
+
+RH
+- CENTRO_CUSTO
+- FUNCIONARIO
+- SALARIO
+- FOLHA_PAGTO
+
+FINANCEIRO
+- CONTAS_RECEBER
+- CONTAS_PAGAR
+- COND_PAGTO
+- COND_PAGTO_DET
+
+
+COMERCIAL
+- PED_VENDAS
+- PED_VENDAS_ITENS
+- VENDEDORES
+- GERENTES
+- META_VENDAS
+- CANAL_VENDAS_G_V
+- CANAL_VENDAS_V_C
+
+FISCAL
+- NOTA_FISCAL
+- NOTA_FISCAL_ITENS
+- CFOP
+
+
+DIAGRAMA MER
+
+mer.vsdx
+met.png
+mer.zip
+
+
+PROJETO PROCEDURES
+
+PROCESSO                 ===>      TEXTO                         ===> OBJETOS
+
+PEDIDO DE VENDA          ====> INCLUSÃO DE PEDIDO DE VENDAS      ===> TABELAS(PED_VENDAS,PED_VENDAS_ITENS)
+
+ 
+PLANEJA ORDEM DE PRODUÇÃO ===> GERA ORDEM PROD COM BASE          ====> PROCEDURE PROC_PLAN_ORDEM
+                               NA DEMANDA DE PEDIDOS
+                               
+                               
+GERA PEDIDO DE COMPRAS    ====> GERA PEDIDO DE COMPRAS COM       ===> PROCEDURE PROC_GER_PED_COMPRAS
+                                BASE NAS ORDENS PROD PLAN
+                                
+                                
+MOVIMENTA ESTOQUE (E/S)   ====> GERA MOVIMENTOS DE ESTOQUE       ===> PROCEDURE PROC_GERA_ESTOQUE
+                                ENTRADA E SAÍDA
+                                
+
+GERA NOTA FISCAL E/S      ====>  GERA NOTA FISCAL DE ENTRADA PED ====> PROCEDURE PROC_GERA_NF
+                                 COMPRAS E GERA NOTA FISCAL SAÍDA
+                                 PED DE VENDAS                
+                                 
+INTEGRA NF(E/S) ESTOQUE   ====> MOVIMENTA ESTOQUE DE ACORDO COM  ===> PROCEDURE PROC_INTEGR_NF_ESTOQUE
+                                OPERAÇÃO NF (E/S)
+INTEGRA NF X FINANCEIRO
+GERA DUPLICATAS A PAGAR OU RECEBER DE ACORDO NF(E/S)
+PROCEDURE PROC_INTEGR_FIN
+
+APONTAMENTO PRODUÇÃO
+MOV ESTOQUE, MAT PRODUZIDO E NECESSÁRIOS
+PROCEDURE PROC_APONTAMENTO
+
+FOLHA DE PAGTO
+GERA FOLHA DE PAGTO
+PROCEDURE PROC_FOLHA
+
+
+
+TRIGGERS
+
+DEMISSAO
+ATUALIZA STATUS = BLOQUEADO PARA USUÁRIO DEMITIDO
+TRIGGER TG_BLOQUEIA_USUARIO
+
+AUMENTO SALARIO
+GERA AUDITORIA DE SALARIO
+TRIGGER TG_AUDIT_SAL
+
+AUTONUMERACOES
+INCREMENTA
+TRIGGER NOTAS, PEDIDOS E OUTROS
+
+
+
+VIEWS
+
+V_FUNCIONARIO
+FUNCIONARIOS, CARGOS, CENTRO_CUSTO
+
+V_FATURAMENTO
+NOTA_FISCAL, NOTA_FISCAL_ITENS, MATERIAL, CIDADES, CLIENTES
+
+V_NECESSIDADES
+ORDEM_PROD, FICHA_TECNICA, ESTOQUE, MATERIAL
+
+
+V_CONTAS_PAGAR
+CONTAS_PAGAR, FORNECEDORES
+
+V_CONTAS_RECEBER
+CONTAS_RECEBER, CLIENTES
+
+
+CRIANDO TABLESPACE PARA O PROJETO
+
+01_table_space.sql
+
+
+CRIANDO AS TABELAS
+
+02_tabelas.sql
+
+
+TRIGGERS DE AUTONUMERAÇÃO
+
+03_TRIGGERS_AUTO.sql
+
+
+CARGAS DE TABELAS
+
+04_CARGAS.sql
+
+
+PROCEDURE DE CÓPIA DE MATERIAL
+
+05_proc_copia_mat.sql
+
+PROCEDURE GERA PLANEJAMENTO DE PRODUÇÃO
+
+06_PROC_PLAN_ORDEM.sql
+
+
+PROCEDURE GERA PEDIDOS DE COMPRAS
+
+07_PROC_GER_PED_COMPRAS.sql
+
+PROCEDURE GERA ESTOQUE
+
+08_PROC_ESTOQUE.sql
+
+PROCEDURE GERA NOTA FISCAL
+
+08_PROC_GERA_NF.sql
+
+PROCEDURE INTEGRA NOTA FISCAL X ESTOQUE
+
+10_PROC_INTEGR_NF_ESTOQUE.sql
+
+PROCEDURE INTEGRAÇÃO FINANCEIRA
+
+11_PROC_INTEGR_FIN.sql
+
+PROCEDURE APONTAMENTO DE PRODUÇÃO
+
+12_PROC_APONTAMENTO.sql
+
+PROCEDURE FOLHA PAGAMENTO
+
+13_PROC_FOLHA.sql
+
+TRIGGER BLOQUEIA USUÁRIO
+
+14_TRIGGERS_BLOQ_USUARIO.sql
+
+TRIGGER AUDITORIA DE SALÁRIO
+
+15_TRIGGER_AUDIT_SALARIO.sql
+
+VIEWS FUNCIONÁRIO
+
+16_VIEWS_FUNCIONARIO.sql
+
+VIEW FATURAMENTO
+
+17_VIEWS_FATURAMENTO.sql
+
+VIEW NECESSIDADES DE ESTOQUE
+
+18_VIEWS_NECESSIDADES.sql
+
+VIEW FINANCEIRO
+
+19_VIEWS_FIN.sql
+
+VIEW CUSTO
+
+20_VIEWS_CUSTO.sql
+
+VIEW CANAL DE VENDAS
+
+21_VIEWS_CANAL_VENDAS.sql
+
+EXPORTANDO TESTE PARA PRODUÇÃO.
+
+Exportar Table Space TST para Produção.
+
+Ferramentas => Exportação de Banco de Dados.
+Arquivo gerado: exportar.sql
+
+Após exportação: Nova conexão => PRD - USER_PRD@123456 e abrir exportar.sql
+
+
+
